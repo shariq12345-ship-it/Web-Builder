@@ -1,0 +1,347 @@
+/* CSS Root Variables */
+:root {
+  --bg-color: #000000;
+  --surface-color: #121212;
+  --header-bg: #0a0a0a;
+  --border-color: #2a2a2a;
+  --text-main: #ffffff;
+  --text-muted: #888888;
+  --hover-bg: #222222;
+  --active-tab-bg: #252525;
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-mono: 'Consolas', 'Courier New', Courier, monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top Navbar Styling */
+.top-navbar {
+  height: 60px;
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  font-size: 20px;
+  color: var(--text-main);
+}
+
+.logo-text {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text-main);
+}
+
+.login-btn {
+  background-color: var(--text-main);
+  color: var(--bg-color);
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.login-btn:hover {
+  background-color: #dddddd;
+  transform: translateY(-1px);
+}
+
+/* Main Container (Centered) */
+.main-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  padding-bottom: 100px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Response Box Component */
+.response-box {
+  width: 100%;
+  height: 75vh;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Header & Tabs with Small Screen Scroll Fix */
+.box-header {
+  min-height: 50px;
+  background-color: #181818;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 15px;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: var(--text-main);
+  background-color: var(--hover-bg);
+}
+
+.tab-btn.active {
+  background-color: var(--active-tab-bg);
+  color: var(--text-main);
+  border-color: var(--border-color);
+}
+
+/* Controls Container (Scrollable on small devices) */
+.tab-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  white-space: nowrap;
+  max-width: 100%;
+  padding-bottom: 2px;
+}
+
+.tab-controls::-webkit-scrollbar {
+  height: 3px;
+}
+
+.tab-controls::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 3px;
+}
+
+.device-switcher {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.box-header button {
+  background: #2d2d2d;
+  color: #ccc;
+  border: 1px solid #444;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.box-header button:hover {
+  background: #3e3e42;
+  color: #fff;
+}
+
+/* Views & Content */
+.box-content {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  height: calc(100% - 50px);
+  overflow: hidden;
+}
+
+.view-panel {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.view-panel.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Code Output View */
+#codeOutput {
+  width: 100%;
+  height: 100%;
+  background-color: var(--surface-color);
+  color: #d4d4d4;
+  border: none;
+  padding: 16px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.5;
+  resize: none;
+  outline: none;
+}
+
+/* Preview Frame View */
+#previewView {
+  background-color: #121212;
+  overflow: auto;
+  padding: 10px;
+  position: relative;
+}
+
+#previewFrame {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* Floating Exit Fullscreen Button */
+#exitFullscreenBtn {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 9999;
+  background: #ff4d4d;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+#exitFullscreenBtn:hover {
+  background: #e63939;
+  transform: scale(1.05);
+}
+
+/* Fixed Bottom Search Bar */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(to top, var(--bg-color) 70%, transparent);
+  z-index: 100;
+}
+
+.input-wrapper {
+  width: 100%;
+  max-width: 800px;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  transition: border-color 0.2s ease;
+}
+
+.input-wrapper:focus-within {
+  border-color: var(--text-muted);
+}
+
+.input-wrapper input[type="text"] {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-main);
+  font-size: 15px;
+  padding: 10px 12px;
+}
+
+.input-wrapper input[type="text"]::placeholder {
+  color: var(--text-muted);
+}
+
+/* Icon Buttons */
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  background-color: var(--hover-bg);
+  color: var(--text-main);
+}
+
+.right-icon {
+  background-color: var(--text-main);
+  color: var(--bg-color);
+}
+
+.right-icon:hover {
+  background-color: #dddddd;
+  color: var(--bg-color);
+}

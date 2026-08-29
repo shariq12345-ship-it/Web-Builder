@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Builder - AI Live Code Playground</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Top Navigation Header -->
+    <header class="top-navbar">
+        <div class="logo-container">
+            <i class="fa-solid fa-code-branch logo-icon"></i>
+            <span class="logo-text">Web Builder</span>
+        </div>
+
+        <div class="nav-actions">
+            <button class="login-btn" onclick="openLoginModal()">
+                <i class="fa-solid fa-right-to-bracket"></i> Login
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Central Container -->
+    <main class="main-container">
+
+        <!-- Response Container -->
+        <div class="response-box" id="responseBox">
+
+            <!-- Top Action Bar -->
+            <div class="box-header">
+                <!-- Tab Selection -->
+                <div class="tab-buttons">
+                    <button class="tab-btn active" id="codeTabBtn" onclick="switchTab('code')">
+                        <i class="fa-solid fa-code"></i> Code
+                    </button>
+                    <button class="tab-btn" id="previewTabBtn" onclick="switchTab('preview')">
+                        <i class="fa-solid fa-eye"></i> Preview
+                    </button>
+                </div>
+
+                <!-- Controls for Code Section -->
+                <div id="codeControls" class="tab-controls">
+                    <button id="copyBtn" onclick="copyGeneratedCode()" title="Copy Code">
+                        <i class="fa-solid fa-copy"></i> Copy Code
+                    </button>
+                </div>
+
+                <!-- Controls for Preview Section -->
+                <div id="previewControls" class="tab-controls" style="display: none;">
+                    <button id="fullscreenBtn" onclick="toggleFullscreen()" title="Fullscreen Preview">
+                        <i class="fa-solid fa-expand"></i> Fullscreen
+                    </button>
+                    <div class="device-switcher">
+                        <button onclick="setDeviceView('desktop')" title="Desktop View"><i
+                                class="fa-solid fa-desktop"></i></button>
+                        <button onclick="setDeviceView('tablet')" title="Tablet View"><i
+                                class="fa-solid fa-tablet-screen-button"></i></button>
+                        <button onclick="setDeviceView('mobile')" title="Mobile View"><i
+                                class="fa-solid fa-mobile-screen-button"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="box-content">
+                <!-- Code View -->
+                <div id="codeView" class="view-panel active">
+                    <textarea id="codeOutput" readonly placeholder="Generated code yahan aayega..."></textarea>
+                </div>
+
+                <!-- Live Preview View -->
+                <div id="previewView" class="view-panel">
+                    <!-- Fullscreen Exit / Back Button -->
+                    <button id="exitFullscreenBtn" onclick="toggleFullscreen()" title="Exit Fullscreen">
+                        <i class="fa-solid fa-compress"></i> Back
+                    </button>
+
+                    <iframe id="previewFrame" title="Website Preview"></iframe>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Fixed Bottom Prompt/Search Bar -->
+    <footer class="bottom-bar">
+        <div class="input-wrapper">
+            <!-- Left + Icon (Code File Upload) -->
+            <label for="codeFileInput" class="icon-btn left-icon" title="Upload Code File">
+                <i class="fa-solid fa-plus"></i>
+            </label>
+            <!-- Multiple attribute add kar diya gaya hai -->
+            <input type="file" id="codeFileInput" accept=".html,.css,.js,.txt" multiple hidden>
+
+            <!-- Center Input Field -->
+            <input type="text" id="promptInput" placeholder="Describe the website you want to build..."
+                autocomplete="off">
+
+            <!-- Right Submit/Upload Icon -->
+            <button type="button" id="sendBtn" class="icon-btn right-icon" title="Send Prompt / Submit File">
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
