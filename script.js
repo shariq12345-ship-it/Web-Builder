@@ -1,5 +1,5 @@
-// Backend API Endpoint (Node.js Server URL)
-const BACKEND_URL = 'http://localhost:5000/api/generate';
+// Change this line:
+const BACKEND_URL = '/api/generate';
 
 // 1. Tab Switcher Logic (Code vs Preview)
 function switchTab(tabName) {
