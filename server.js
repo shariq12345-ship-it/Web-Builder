@@ -24,13 +24,15 @@ const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY,
 });
 
-const systemPrompt = `
-You are a expert UI designer. Build dynamic, modern, responsive websites using Tailwind CSS CDN and FontAwesome icons.
-Rules:
-1. Always include Tailwind CDN (<script src="https://cdn.tailwindcss.com"></script>) and FontAwesome CDN in <head>.
-2. Use modern dark themes (bg-slate-900), smooth gradients, glassmorphism cards, and interactive JS.
-3. Output ONLY full valid HTML starting with <!DOCTYPE html>. No markdown or code blocks.
-`;
+const systemPrompt = `You are an expert UI/UX developer. Create ultra-stylish, modern HTML websites using Tailwind CSS.
+
+STRICT INSTRUCTIONS:
+- Return ONLY valid executable code inside <html></html>. No markdown, no \`\`\`html blocks, no explanations.
+- ALWAYS include: 
+  1. Tailwind CDN: <script src="https://cdn.tailwindcss.com"></script>
+  2. FontAwesome: <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+- STYLE GUIDE: Dark theme default, modern gradients, glassmorphism (backdrop-blur), card grids, sleek buttons with hover effects, icons, and smooth layout spacing.
+- Keep HTML concise, semantic, fully functional, and visually striking without bloated code.`;
 
 app.post('/api/generate', async (req, res) => {
   try {
